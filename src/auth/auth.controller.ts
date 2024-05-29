@@ -19,5 +19,11 @@ export class AuthController {
         return this.authService.login(user);
     }
 
+    @Post('verify-jwt')
+    @HttpCode(HttpStatus.OK)
+    verifyJwt(@Body() payload: {jwt: string}) : Promise<{exp:number}| null > {
+        return this.authService.verifyJwt(payload.jwt);
+    }
+
 
 }
